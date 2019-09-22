@@ -1,24 +1,39 @@
-#cd into UNIX Assignment Git pull to update my Unix Assignment folder. Made new folder called zkazibwe_UNIX_Assignment within Unix_Assignment folder on HPC-class Cloned it into my bash working space
+#cd into UNIX_Assignment Git pull to update my Unix_Assignment folder. Made new folder called zkazibwe_UNIX_Assignment within Unix_Assignment folder on HPC-class Cloned my BCB546X_UNIX_ASSIGNMENT folder (https://github.com/kzach88/BCB546X_UNIX_ASSIGNMENT) into my bash working space
 
 ls to inspect the contents of my Unix Assignment folder. Git pull origin master, Already uptodate
 
-##Data Inspection
+######DATA INSPECTION
+
 
 Structure and dimensions of files File sizes I will use the use the du command, also with the -h
 
 That is du -h fang_et_al_genotypes.txt snp_position.txt
 
-6.1M fang_et_al_genotypes.txt 38K snp_position.txt
+6.1M fang_et_al_genotypes.txt 
+38K snp_position.txt
 
-Number of lines wc -l fang_et_al_genotypes.txt snp_position.txt
+######Number of lines 
+wc -l fang_et_al_genotypes.txt snp_position.txt
 
-2783 fang_et_al_genotypes.txt 984 snp_position.txt 3767 total The default wc command provides the number of lines, words, and bytes (characters) in these files wc fang_et_al_genotypes.txt snp_position.txt
+2783 fang_et_al_genotypes.txt 
+984 snp_position.txt 
+3767 total 
+#######The default wc command provides the number of lines, words, and bytes (characters) in these files
+wc fang_et_al_genotypes.txt snp_position.txt
 
 Fang et al
 
-2783 2744038 11051939 fang_et_al_genotypes.txt Lines 2783 Words 2744038 Characters 11051939 snp-position
+2783 2744038 11051939 fang_et_al_genotypes.txt 
+Lines 2783 
+Words 2744038
+Characters 11051939 snp-position
 
-984 13198 82763 snp_position.txt Lines 984 Words 13198 Characters 82763 ###Number of columns
+snp_position.txt
+984 13198 82763 snp_position.txt 
+Lines 984 
+Words 13198 
+Characters 82763 
+###Number of columns
 
 fang_et_al_genotypes.txt
 
