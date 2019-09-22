@@ -1,3 +1,54 @@
+#cd into UNIX Assignment Git pull to update my Unix Assignment folder. Made new folder called zkazibwe_UNIX_Assignment within Unix_Assignment folder on HPC-class Cloned it into my bash working space
+
+ls to inspect the contents of my Unix Assignment folder. Git pull origin master, Already uptodate
+
+##Data Inspection
+
+Structure and dimensions of files File sizes I will use the use the du command, also with the -h
+
+That is du -h fang_et_al_genotypes.txt snp_position.txt
+
+6.1M fang_et_al_genotypes.txt 38K snp_position.txt
+
+Number of lines wc -l fang_et_al_genotypes.txt snp_position.txt
+
+2783 fang_et_al_genotypes.txt 984 snp_position.txt 3767 total The default wc command provides the number of lines, words, and bytes (characters) in these files wc fang_et_al_genotypes.txt snp_position.txt
+
+Fang et al
+
+2783 2744038 11051939 fang_et_al_genotypes.txt Lines 2783 Words 2744038 Characters 11051939 snp-position
+
+984 13198 82763 snp_position.txt Lines 984 Words 13198 Characters 82763 ###Number of columns
+
+fang_et_al_genotypes.txt
+
+awk -F "\t" '{print NF; exit}' fang_et_al_genotypes.txt
+
+986 Columns snp_position.txt
+
+awk -F "\t" '{print NF; exit}' snp_position.txt 15 Columns #####I used Vi to inspect the files and saw that they have headers so, i tried tail and awk and they all returned the same number of colunms for both files
+
+tail -n +6 fang_et_al_genotypes.txt | awk -F "\t" '{print NF; exit}'
+
+grep -v "^#" fang_et_al_genotypes.txt | awk -F "\t" '{print NF; exit}'
+
+###non-ASCII characters
+
+use the file command file snp_position.txt snp_position.txt: ASCII English text
+
+hexdump -c snp_position.txt | wc
+
+Words 5174 Lines 87575 Characters 372464 file fang_et_al_genotypes.txt fang_et_al_genotypes.txt: ASCII text, with very long lines
+
+hexdump -c fang_et_al_genotypes.txt | wc
+
+Words 690748 Lines 11737311 Characters 49710272 Staging and commiting the Data inspection files into the README.md git add README.md
+
+git commit -m "initial commit (README.md)
+
+git push origin master
+
+
 #i BCB546X_UNIX_ASSIGNMENT
 1. Extracting Info from Files
 First, I took the column headers and put them in new files. Then, I extracted the maize and teosinte data and appended them to the new files.
