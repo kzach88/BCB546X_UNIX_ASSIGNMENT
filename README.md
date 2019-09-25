@@ -2,14 +2,14 @@
 
 ls to inspect the contents of my Unix Assignment folder. Git pull origin master, Already uptodate
 
-######DATA INSPECTION
+#DATA INSPECTION
 
 
 Structure and dimensions of files File sizes I will use the use the du command, also with the -h
 
 That is du -h fang_et_al_genotypes.txt snp_position.txt
 
-6.1M fang_et_al_genotypes.txt 
+**6.1M fang_et_al_genotypes.txt**
 38K snp_position.txt
 
 ######Number of lines 
