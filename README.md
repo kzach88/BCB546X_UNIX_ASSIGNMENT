@@ -13,7 +13,7 @@ That is du -h fang_et_al_genotypes.txt snp_position.txt
 38K snp_position.txt
 
 ######Number of lines 
-wc -l fang_et_al_genotypes.txt snp_position.txt
+> wc -l fang_et_al_genotypes.txt snp_position.txt
 
 2783 fang_et_al_genotypes.txt 
 984 snp_position.txt 
