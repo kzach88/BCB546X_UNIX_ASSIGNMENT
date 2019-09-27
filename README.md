@@ -145,7 +145,7 @@ I checked to make sure my extractions worked by looking at the number of lines, 
       
     290 ZMMIL
     
-   1256 ZMMLR
+    1256 ZMMLR
    
      27 ZMMMR
      
@@ -158,49 +158,69 @@ I checked to make sure my extractions worked by looking at the number of lines, 
      41 ZMPIL
      
      34 ZMPJA
-     
-[zkazibwe@hpc-class My-Unix_AS]$
 
-3. Combine genotype with SNP position
-[zkazibwe@hpc-class My-Unix_AS]$ join -1 1 -2 1 -t $'\t' snp_infor.txt teosinte_sgenotype.txt > teosinte_joint.txt
-[zkazibwe@hpc-class My-Unix_AS]$ ^C
-[zkazibwe@hpc-class My-Unix_AS]$ join -1 1 -2 1 -t $'\t' snp_infor.txt maize_sgenotype.txt > maize_joint.txt
+3.**Combine genotype with SNP position**
 
-4. Separate SNPs based on Chromosome
-[zkazibwe@hpc-class My-Unix_AS]$ for i in {1..10} ; do (awk '$1 ~ /SNP/' maize_joint.txt && awk '$2 == '$i'&& $3 != "multiple"' maize_joint.txt) > maize_chr$i.txt ; done
-[zkazibwe@hpc-class My-Unix_AS]$ (awk '$1 ~ /SNP/' maize_joint.txt && awk '$3 == "unknown"' maize_joint.txt )> maize_unknown.txt
-[zkazibwe@hpc-class My-Unix_AS]$ (awk '$1 ~ /SNP/' maize_joint.txt && awk '$2 == "multiple" || $3 == "multiple"' maize_joint.txt )> maize_multiple.txt
-[zkazibwe@hpc-class My-Unix_AS]$ for i in {1..10} ; do (awk '$1 ~ /SNP/' teosinte_joint.txt && awk '$2 == '$i' && $3 != "multiple"' teosinte_joint.txt) > teosinte_chr$i.txt ; done
-[zkazibwe@hpc-class My-Unix_AS]$ (awk '$1 ~ /SNP/' teosinte_joint.txt && awk '$3 == "unknown"' teosinte_joint.txt )> teosinte_unknown.txt
-[zkazibwe@hpc-class My-Unix_AS]$ (awk '$1 ~ /SNP/' teosinte_joint.txt && awk '$2 == "multiple" || $3 == "multiple" ' teosinte_joint.txt) > teosinte_multiple.txt
-[zkazibwe@hpc-class My-Unix_AS]$
+[zkazibwe@hpc-class My-Unix_AS]$ `join -1 1 -2 1 -t $'\t' snp_infor.txt teosinte_sgenotype.txt > teosinte_joint.txt`
 
-for command is used to do the loop for 10 chromosomes;
-awk command is used to first print out header and then print out the records which feature pattern that field2 is the same with value of i;
-new file saved as maize_chr$i.txt and teosinte_Chr$i.txt, in which i is the number of chromosome.
+[zkazibwe@hpc-class My-Unix_AS]$ `join -1 1 -2 1 -t $'\t' snp_infor.txt maize_sgenotype.txt > maize_joint.txt`
 
-5. Sort SNPs based on position
-[zkazibwe@hpc-class My-Unix_AS]$ for i in {1..10}; do (head -n 1 maize_chr$i.txt && tail -n +2 maize_chr$i.txt | sort -k3,3n )> incr_maize_chr$i.txt ; done
-[zkazibwe@hpc-class My-Unix_AS]$ for i in {1..10}; do (head -n 1 maize_chr$i.txt && tail -n +2 maize_chr$i.txt | sort -k3r,3n ) | sed 's/?/-/g' > decr_maize_chr$i.txt ; done
-[zkazibwe@hpc-class My-Unix_AS]$ for i in {1..10}; do (head -n 1 teosinte_chr$i.txt && tail -n +2 teosinte_chr$i.txt | sort -k3,3n )> incr_teosinte_chr$i.txt ; done
-[zkazibwe@hpc-class My-Unix_AS]$ for i in {1..10}; do (head -n 1 teosinte_chr$i.txt && tail -n +2 teosinte_chr$i.txt | sort -k3r,3n ) | sed 's/?/-/g' > decr_teosinte_chr$i.txt ; done
-[zkazibwe@hpc-class My-Unix_AS]$
+`join` command is to combine the two file based on the 1st column of `snp_infor.txt` and the 1st column of `maize_transposed_genotype.txt`
 
-for command is used to do the loop for 10 files;
-head and tail command are used to keep the header at top and then do the sorting on the other lines;
-sort command is the key command here. We do the sorting based on the 3rd column, which shows the position of SNP. -k3 means the result will be listed increasingly and -k3r means the reverse. 3n means they are treated as numeric.
-sed command is used to switch the "?", which is encoded to be missing data, to "-";
-new files are saves as incr_maize_chr$i.txt / incr_teosinte_chr$i.txt if their position is listed increasingly; decr_maize_chr$i.txt / decr_teosinte_chr$i.txt if their position is listed decreasingly.
+new file was saved as maize_joint.txt
 
-6. Preparing all my files to send to git repository
-$ mkdir maize teosinte process_file
-$ mv decr_maize* incr_maize* maize_m* maize_u* ./maize
-$ mv decr_teosinte* incr_teosinte* teosinte_m* teosinte_u* ./teosinte
-$ mv * ./process_file   
+4.**Separate SNPs based on Chromosome**
 
-mkdir command is to make sub-directories under this directory;
-mv commands are to move files to different directories;
+[zkazibwe@hpc-class My-Unix_AS]$ `for i in {1..10} ; do (awk '$1 ~ /SNP/' maize_joint.txt && awk '$2 == '$i'&& $3 != "multiple"' maize_joint.txt) > maize_chr$i.txt ; done`
+
+[zkazibwe@hpc-class My-Unix_AS]$ `(awk '$1 ~ /SNP/' maize_joint.txt && awk '$3 == "unknown"' maize_joint.txt )> maize_unknown.txt`
+
+[zkazibwe@hpc-class My-Unix_AS]$ `(awk '$1 ~ /SNP/' maize_joint.txt && awk '$2 == "multiple" || $3 == "multiple"' maize_joint.txt )> maize_multiple.txt`
+
+[zkazibwe@hpc-class My-Unix_AS]$ `for i in {1..10} ; do (awk '$1 ~ /SNP/' teosinte_joint.txt && awk '$2 == '$i' && $3 != "multiple"' teosinte_joint.txt) > teosinte_chr$i.txt ; done`
+
+[zkazibwe@hpc-class My-Unix_AS]$ `(awk '$1 ~ /SNP/' teosinte_joint.txt && awk '$3 == "unknown"' teosinte_joint.txt )> teosinte_unknown.txt`
+
+[zkazibwe@hpc-class My-Unix_AS]$ `(awk '$1 ~ /SNP/' teosinte_joint.txt && awk '$2 == "multiple" || $3 == "multiple" ' teosinte_joint.txt) > teosinte_multiple.txt`
+
+`for` command is used to do the loop for 10 chromosomes;
+
+`awk` command is used to first print out header and then print out the records which feature pattern that field2 is the same with value of i;
+
+new file was saved as maize_chr$i.txt and teosinte_Chr$i.txt, in which i is the number of chromosome.
+
+5.**Sort SNPs based on position**
+
+[zkazibwe@hpc-class My-Unix_AS]$ `for i in {1..10}; do (head -n 1 maize_chr$i.txt && tail -n +2 maize_chr$i.txt | sort -k3,3n )> incr_maize_chr$i.txt ; done`
+
+[zkazibwe@hpc-class My-Unix_AS]$ `for i in {1..10}; do (head -n 1 maize_chr$i.txt && tail -n +2 maize_chr$i.txt | sort -k3r,3n ) | sed 's/?/-/g' > decr_maize_chr$i.txt ; done`
+
+[zkazibwe@hpc-class My-Unix_AS]$ `for i in {1..10}; do (head -n 1 teosinte_chr$i.txt && tail -n +2 teosinte_chr$i.txt | sort -k3,3n )> incr_teosinte_chr$i.txt ; done`
+
+[zkazibwe@hpc-class My-Unix_AS]$ `for i in {1..10}; do (head -n 1 teosinte_chr$i.txt && tail -n +2 teosinte_chr$i.txt | sort -k3r,3n ) | sed 's/?/-/g' > decr_teosinte_chr$i.txt ; done`
+
+`for` command was used to do the loop for 10 files;
+
+`head` and `tail` command are used to keep the header at top and then do the sorting on the other lines;
+
+`sor`t if for sorting of data.  I did the sorting based on the 3rd column, which shows the position of SNP. `-k3` means the result will be listed increasingly and `-k3r` means the reverse. `3n` means they are treated as numeric.
+
+I used `sed` command to switch the "`?`", which is encoded to be missing data, to "`-`";
+new files are saves as `incr_maize_chr$i.txt` / `incr_teosinte_chr$i.txt` if their position is listed increasingly; `decr_maize_chr$i.txt` / `decr_teosinte_chr$i.txt` if their position is listed decreasingly.
+
+6.**Preparing all my files to send to git repository/commit**
+
+$ `mkdir` MAIZE_FILES TEOSINTE_FILES OTHER_FILES`
+
+$ `mv` decr_maize* incr_maize* maize_m* maize_u* ./maize
+
+$ `mv` decr_teosinte* incr_teosinte* teosinte_m* teosinte_u* ./teosinte`
+
+$ `mv` maize_c* teosinte_c* maize_g* maize_sg* teosinte_g* teosinte_sg* maize_j* snp_infor* snp_position* teosinte_joint* ./OTHER_FILES/`
+ 
+`mkdir` command is to make sub-directories under `My-Unix_AS`;
+`mv` commands are to move files to different directories;
 Here I moved 12 maize-related files to ./MAIZE_FILES directory; 12 teosinte-related files to ./TEOSINTE_FILES directory; the other files generated during the above process and also the original 3 files are moved to ./OTHER_FILES
-join command is to combine the two file based on the 1st column of snp_infor.txt and the 1st column of maize_transposed_genotype.txt;
-new file saved as maize_joint.txt
+
+Git push to commit the changes to my `BCB546X_UNIX_ASSIGNMENT` repository.
 
