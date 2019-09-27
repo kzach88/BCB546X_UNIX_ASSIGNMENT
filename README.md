@@ -1,4 +1,4 @@
-#cd into UNIX_Assignment Git pull to update my Unix_Assignment folder. Made new folder called zkazibwe_UNIX_Assignment within Unix_Assignment folder on HPC-class Cloned my BCB546X_UNIX_ASSIGNMENT folder (https://github.com/kzach88/BCB546X_UNIX_ASSIGNMENT) into my bash working space
+#cd into `UNIX_Assignment` Git pull to update my Unix_Assignment folder. Made new folder called zkazibwe_UNIX_Assignment within Unix_Assignment folder on HPC-class Cloned my BCB546X_UNIX_ASSIGNMENT folder (https://github.com/kzach88/BCB546X_UNIX_ASSIGNMENT) into my bash working space
 
 ls to inspect the contents of my Unix Assignment folder. Git pull origin master, Already uptodate
 
