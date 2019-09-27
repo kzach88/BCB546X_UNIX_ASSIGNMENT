@@ -208,16 +208,16 @@ new files are saves as `incr_maize_chr$i.txt` / `incr_teosinte_chr$i.txt` if the
 
 6.**Preparing all my files to send to git repository/commit**
 
-$ `mkdir` MAIZE_FILES TEOSINTE_FILES OTHER_FILES`
+$ `mkdir MAIZE_FILES TEOSINTE_FILES OTHER_FILES`
 
-$ `mv` decr_maize* incr_maize* maize_m* maize_u* ./maize
+$ `mv decr_maize* incr_maize* maize_m* maize_u* ./maize`
 
-$ `mv` decr_teosinte* incr_teosinte* teosinte_m* teosinte_u* ./teosinte`
+$ `mv decr_teosinte* incr_teosinte* teosinte_m* teosinte_u* ./teosinte`
 
-$ `mv` maize_c* teosinte_c* maize_g* maize_sg* teosinte_g* teosinte_sg* maize_j* snp_infor* snp_position* teosinte_joint* ./OTHER_FILES/`
+$ `mv maize_c* teosinte_c* maize_g* maize_sg* teosinte_g* teosinte_sg* maize_j* snp_infor* snp_position* teosinte_joint* ./OTHER_FILES/`
  
 `mkdir` command is to make sub-directories under `My-Unix_AS`;
 `mv` commands are to move files to different directories;
 Here I moved 12 maize-related files to ./MAIZE_FILES directory; 12 teosinte-related files to ./TEOSINTE_FILES directory; the other files generated during the above process and also the original 3 files are moved to ./OTHER_FILES
 
-Git pull to save the changes to my `README.md in `BCB546X_UNIX_ASSIGNMENT` repository.
+Git pull to save the changes to my `README.md in` `BCB546X_UNIX_ASSIGNMENT` repository.
