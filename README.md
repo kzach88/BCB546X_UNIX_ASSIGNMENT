@@ -47,19 +47,25 @@ snp_position.txt
 
 **Characters 82763**
 
-##Number of columns##
+**Number of columns**
 
 fang_et_al_genotypes.txt
 
 `awk -F "\t" '{print NF; exit}' fang_et_al_genotypes.txt`
 
-**986 Columns snp_position.txt**
+**986 Columns**
 
-awk -F "\t" '{print NF; exit}' snp_position.txt 15 Columns ##### I used Vi to inspect the files and saw that they have headers so, i tried tail and awk and they all returned the same number of colunms for both files
+snp_position.txt
 
-tail -n +6 fang_et_al_genotypes.txt | awk -F "\t" '{print NF; exit}'
+`awk -F "\t" '{print NF; exit}' snp_position.txt`
 
-grep -v "^#" fang_et_al_genotypes.txt | awk -F "\t" '{print NF; exit}'
+**15 Columns**
+
+##### I used Vi to inspect the files and saw that they have headers so, i tried `tail` and `awk` and they all returned the same number of colunms for both files#####
+
+`tail -n +6 fang_et_al_genotypes.txt | awk -F "\t" '{print NF; exit}`
+
+`grep -v "^#" fang_et_al_genotypes.txt | awk -F "\t" '{print NF; exit}`
 
 ###non-ASCII characters
 
