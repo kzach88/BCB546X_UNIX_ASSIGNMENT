@@ -76,14 +76,19 @@ snp_position.txt
 > `git push origin master`.
 
 
-#i BCB546X_UNIX_ASSIGNMENT
-1. Extracting Info from Files
-First, I took the column headers and put them in new files. Then, I extracted the maize and teosinte data and appended them to the new files.
-$ head -n 1 fang_et_al_genotypes.txt > maize_genotypes.txt
-$ head -n 1 fang_et_al_genotypes.txt > teosinte_genotypes.txt
-$ awk '$3 ~ /ZMMIL|ZMMLR|ZMMMR/ { print $0}' fang_et_al_genotypes.txt >> maize_genotypes.txt
-$ awk '$3 ~ /ZMPBA|ZMPIL|ZMPJA/ { print $0}' fang_et_al_genotypes.txt >> teosinte_genotypes.txt
-2. Separate Maize and Teosinte genotypes
+## **DATA PROCESSING**
+
+1.**Extracting Info from Files**
+
+First, I will take the column headers and put them in new files. Then, I will extract the maize and teosinte data and appended them to the new files.
+
+>`$ head -n 1 fang_et_al_genotypes.txt > maize_genotypes.txt
+>`$ head -n 1 fang_et_al_genotypes.txt > teosinte_genotypes.txt
+>`$ awk '$3 ~ /ZMMIL|ZMMLR|ZMMMR/ { print $0}' fang_et_al_genotypes.txt >> maize_genotypes.txt
+>`$ awk '$3 ~ /ZMPBA|ZMPIL|ZMPJA/ { print $0}' fang_et_al_genotypes.txt >> teosinte_genotypes.txt
+
+2. **Separate Maize and Teosinte genotypes**
+
 $ grep -E "(ZMMIL|ZMMLR|ZMMMR|Group)" fang_et_al_genotypes.txt | cut -f 1,4-986 |awk -f transpose.awk  > maize_genotype.txt  
 $ sed 's/Sample_ID/SNP_ID/' maize_genotype.txt | sort –k1,1 > maize_sgenotype.txt 
 $ grep -E "(ZMPBA|ZMPIL|ZMPJA|Group)" fang_et_al_genotypes.txt | cut -f 1,4-986 |awk -f transpose.awk > teosinte_genotype.txt  
