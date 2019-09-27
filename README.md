@@ -63,17 +63,17 @@ snp_position.txt
 
 **I used `Vi` to inspect the files and saw that they have headers so, i tried `tail` and `awk` and they all returned the same number of colunms for both files**
 
->`tail -n +6 fang_et_al_genotypes.txt | awk -F "\t" '{print NF; exit}`
+`tail -n +6 fang_et_al_genotypes.txt | awk -F "\t" '{print NF; exit}`
 
->`grep -v "^#" fang_et_al_genotypes.txt | awk -F "\t" '{print NF; exit}`
+`grep -v "^#" fang_et_al_genotypes.txt | awk -F "\t" '{print NF; exit}`
 
 **Staging and commiting the Data inspection files into the `README.md`** 
 
-> `git add README.md`.
+`git add README.md`.
 
-> `git commit -m "initial commit (README.md)`.
+`git commit -m "initial commit (README.md)`.
 
-> `git push origin master`.
+`git push origin master`.
 
 
 ## **DATA PROCESSING**
@@ -82,13 +82,9 @@ snp_position.txt
 
 First, I will take the column headers and put them in new files. Then, I will extract the maize and teosinte data and appended them to the new files.
 
-> `head -n 1 fang_et_al_genotypes.txt > maize_genotypes.txt`
+`head -n 1 fang_et_al_genotypes.txt > maize_genotypes.txt`
 
-> `head -n 1 fang_et_al_genotypes.txt > teosinte_genotypes.txt`
-
-> `awk '$3 ~ /ZMMIL|ZMMLR|ZMMMR/ { print $0}' fang_et_al_genotypes.txt >> maize_genotypes.txt`
-
-> `awk '$3 ~ /ZMPBA|ZMPIL|ZMPJA/ { print $0}' fang_et_al_genotypes.txt >> teosinte_genotypes.txt`
+`head -n 1 fang_et_al_genotypes.txt > teosinte_genotypes.txt`
 
 Or i can use this command to extract SNP infoemation form the files
 
@@ -101,6 +97,14 @@ I used the results of the last code `cut` to proceed to the following steps
 
 2.**Separate Maize and Teosinte genotypes**
 
+First line of code used follwing `head` command
+
+`awk '$3 ~ /ZMMIL|ZMMLR|ZMMMR/ { print $0}' fang_et_al_genotypes.txt >> maize_genotypes.txt`
+
+`awk '$3 ~ /ZMPBA|ZMPIL|ZMPJA/ { print $0}' fang_et_al_genotypes.txt >> teosinte_genotypes.txt`
+
+These are the other lines of code I used follwoing the the `cut` command
+
 `grep -E "(ZMMIL|ZMMLR|ZMMMR|Group)" fang_et_al_genotypes.txt | cut -f 1,4-986 |awk -f transpose.awk  > maize_genotype.txt`
 
 `sed 's/Sample_ID/SNP_ID/' maize_genotype.txt | sort –k1,1 > maize_sgenotype.txt`
@@ -109,9 +113,13 @@ I used the results of the last code `cut` to proceed to the following steps
 
 `sed 's/Sample_ID/SNP_ID/' teosinte_genotype.txt | sort –k1,1 > teosinte_sgenotype.txt`
 
-##### grep command is to print out lines containing "ZMMIL", "ZMMLR" "ZMMMR" and "Group" ("ZMPBA", "ZMPIL" "ZMPJA" and "Group" for teosinte), which are maize samples and the header;cut commands is to remove the 2 columns we don't need;awk command is to transpose the table so that it has the same data frame with snp_infor.txt and we can join them later;sed command is change the header in genotype file to the same with SNP file, so that we can join them later;sort command is to sort by the 1st column;
+`grep` command is to print out lines containing "ZMMIL", "ZMMLR" "ZMMMR" and "Group" ("ZMPBA", "ZMPIL" "ZMPJA" and "Group" for teosinte), which are maize samples and the header;
+`cut` command is to remove the 2 columns which are not needed;
+`awk` command is to transpose the table so that it has the same data frame with `snp_infor.txt` to be joined later;
+`sed` command is change the header in genotype file to the same with SNP file, so they can be jopined later;
+`sort` command is to sort by the 1st column;
 
-new files saved as maize_sgenotype.txt and teosinte_sgenotype.txt OR maize_genotype.txt and teosinte_genotype.txt
+new files were saved as `maize_sgenotype.txt` and `teosinte_sgenotype.txt` OR `maize_genotype.txt` and `teosinte_genotype.txt`
 
 I checked to make sure my extractions worked by looking at the number of lines, words and characters in each file
 [zkazibwe@hpc-class My-Unix_AS]$ wc maize_genotypes.txt teosinte_genotypes.txt
