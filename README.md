@@ -31,15 +31,19 @@ Fang et al
 
 #2783 2744038 11051939 fang_et_al_genotypes.txt 
 
-**`Lines 2783 
-Words 2744038
-Characters 11051939 snp-position`**
+**Lines 2783**
 
-**`snp_position.txt
+**Words 2744038**
+**Characters 11051939**
+
+snp_position.txt
 984 13198 82763 snp_position.txt 
-Lines 984
-Words 13198 
-Characters 82763`**
+
+**Lines 984**
+
+**Words 13198**
+
+**Characters 82763**
 
 **Number of columns**
 
