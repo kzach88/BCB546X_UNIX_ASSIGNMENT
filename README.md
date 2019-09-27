@@ -61,9 +61,10 @@ snp_position.txt
 
 **15 Columns**
 
-# I used Vi to inspect the files and saw that they have headers so, i tried `tail` and `awk` and they all returned the same number of colunms for both files
+### I used Vi to inspect the files and saw that they have headers so, i tried `tail` and `awk` and they all returned the same number of colunms for both files
 
 >`tail -n +6 fang_et_al_genotypes.txt | awk -F "\t" '{print NF; exit}`
+
 >`grep -v "^#" fang_et_al_genotypes.txt | awk -F "\t" '{print NF; exit}`
 
 ### non-ASCII characters
