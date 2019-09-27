@@ -34,9 +34,11 @@ Fang et al
 **Lines 2783**
 
 **Words 2744038**
+
 **Characters 11051939**
 
 snp_position.txt
+
 984 13198 82763 snp_position.txt 
 
 **Lines 984**
@@ -45,13 +47,13 @@ snp_position.txt
 
 **Characters 82763**
 
-**Number of columns**
+##Number of columns##
 
 fang_et_al_genotypes.txt
 
-awk -F "\t" '{print NF; exit}' fang_et_al_genotypes.txt
+`awk -F "\t" '{print NF; exit}' fang_et_al_genotypes.txt`
 
-986 Columns snp_position.txt
+**986 Columns snp_position.txt**
 
 awk -F "\t" '{print NF; exit}' snp_position.txt 15 Columns ##### I used Vi to inspect the files and saw that they have headers so, i tried tail and awk and they all returned the same number of colunms for both files
 
