@@ -3,7 +3,8 @@
 Cloned my `BCB546X_UNIX_ASSIGNMENT` folder (https://github.com/kzach88/BCB546X_UNIX_ASSIGNMENT) into my bash working space
 
 1.**DATA INSPECTION**
-#Structure and dimensions of files 
+#Structure and dimensions of files#
+
 <File sizes I will use the use the du command, also with the -h>
 
 That is du -h fang_et_al_genotypes.txt snp_position.txt
