@@ -18,14 +18,14 @@ That is `du -h fang_et_al_genotypes.txt snp_position.txt`
 
 `> wc -l fang_et_al_genotypes.txt snp_position.txt`
 
-**2783 fang_et_al_genotypes.txt 
+**2783 fang_et_al_genotypes.txt**
 
-**984 snp_position.txt 
+**984 snp_position.txt**
 
-**3767 total 
+**3767 total**
 
-# The default wc command provides the number of lines, words, and bytes (characters) in these files
-'wc fang_et_al_genotypes.txt snp_position.txt'
+#The default wc command provides the number of lines, words, and bytes (characters) in these files
+`wc fang_et_al_genotypes.txt snp_position.txt`
 
 Fang et al
 
