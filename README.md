@@ -220,4 +220,4 @@ $ `mv` maize_c* teosinte_c* maize_g* maize_sg* teosinte_g* teosinte_sg* maize_j*
 `mv` commands are to move files to different directories;
 Here I moved 12 maize-related files to ./MAIZE_FILES directory; 12 teosinte-related files to ./TEOSINTE_FILES directory; the other files generated during the above process and also the original 3 files are moved to ./OTHER_FILES
 
-Git push to commit the changes to my `BCB546X_UNIX_ASSIGNMENT` repository.
+Git pull to save the changes to my `README.md in `BCB546X_UNIX_ASSIGNMENT` repository.
