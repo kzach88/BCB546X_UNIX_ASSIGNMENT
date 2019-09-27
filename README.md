@@ -10,12 +10,12 @@ Cloned my `BCB546X_UNIX_ASSIGNMENT` folder (https://github.com/kzach88/BCB546X_U
 
 That is `du -h fang_et_al_genotypes.txt snp_position.txt`
 
-`**6.1M fang_et_al_genotypes.txt** 
+**6.1M fang_et_al_genotypes.txt** 
 
 **38K snp_position.txt**
 
-######Number of lines 
-> wc -l fang_et_al_genotypes.txt snp_position.txt
+**Number of lines 
+`> wc -l fang_et_al_genotypes.txt snp_position.txt
 
 2783 fang_et_al_genotypes.txt 
 984 snp_position.txt 
