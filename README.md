@@ -138,16 +138,27 @@ I checked to make sure my extractions worked by looking at the number of lines, 
     2550  2514300 10135146 total
     
  I also checked to see that each file had only the groups that I wanted by cutting the groups from column 3, sorting them and running the command unique and getting a count.
-[zkazibwe@hpc-class My-Unix_AS]$ cut -f 3 maize_genotypes.txt | sort | uniq -c
+ 
+[zkazibwe@hpc-class My-Unix_AS]$ `cut -f 3 maize_genotypes.txt | sort | uniq -c`
+      
       1 Group
+      
     290 ZMMIL
+    
    1256 ZMMLR
+   
      27 ZMMMR
-[zkazibwe@hpc-class My-Unix_AS]$ cut -f 3 teosinte_genotypes.txt | sort | uniq -c
+     
+[zkazibwe@hpc-class My-Unix_AS]$ `cut -f 3 teosinte_genotypes.txt | sort | uniq -c`
+
       1 Group
+      
     900 ZMPBA
+    
      41 ZMPIL
+     
      34 ZMPJA
+     
 [zkazibwe@hpc-class My-Unix_AS]$
 
 3. Combine genotype with SNP position
