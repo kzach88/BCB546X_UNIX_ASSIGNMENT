@@ -68,9 +68,9 @@ I used `Vi` to inspect the files and saw that they have headers so, i tried `tai
 >`grep -v "^#" fang_et_al_genotypes.txt | awk -F "\t" '{print NF; exit}`
 
 Staging and commiting the Data inspection files into the README.md 
-> `git add README.md`
-> `git commit -m "initial commit (README.md)`
-> `git push origin master`
+> `git add README.md`.
+> `git commit -m "initial commit (README.md)`.
+> `git push origin master`.
 
 
 #i BCB546X_UNIX_ASSIGNMENT
