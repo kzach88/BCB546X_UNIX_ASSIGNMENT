@@ -29,17 +29,19 @@ That is `du -h fang_et_al_genotypes.txt snp_position.txt`
 
 Fang et al
 
-2783 2744038 11051939 fang_et_al_genotypes.txt 
-Lines 2783 
-Words 2744038
-Characters 11051939 snp-position
+#2783 2744038 11051939 fang_et_al_genotypes.txt 
 
-snp_position.txt
+**`Lines 2783 
+Words 2744038
+Characters 11051939 snp-position`**
+
+**`snp_position.txt
 984 13198 82763 snp_position.txt 
-Lines 984 
+Lines 984
 Words 13198 
-Characters 82763 
-###Number of columns
+Characters 82763`**
+
+**Number of columns**
 
 fang_et_al_genotypes.txt
 
@@ -47,7 +49,7 @@ awk -F "\t" '{print NF; exit}' fang_et_al_genotypes.txt
 
 986 Columns snp_position.txt
 
-awk -F "\t" '{print NF; exit}' snp_position.txt 15 Columns #####I used Vi to inspect the files and saw that they have headers so, i tried tail and awk and they all returned the same number of colunms for both files
+awk -F "\t" '{print NF; exit}' snp_position.txt 15 Columns ##### I used Vi to inspect the files and saw that they have headers so, i tried tail and awk and they all returned the same number of colunms for both files
 
 tail -n +6 fang_et_al_genotypes.txt | awk -F "\t" '{print NF; exit}'
 
