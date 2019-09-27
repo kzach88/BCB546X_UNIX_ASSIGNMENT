@@ -78,7 +78,7 @@ snp_position.txt
 
 ## **DATA PROCESSING**
 
-1.**Extracting SNP Info from Files**
+1.**Extracting SNP Infomation from the files**
 
 First, I will take the column headers and put them in new files. Then, I will extract the maize and teosinte data and appended them to the new files.
 
@@ -86,24 +86,25 @@ First, I will take the column headers and put them in new files. Then, I will ex
 
 `head -n 1 fang_et_al_genotypes.txt > teosinte_genotypes.txt`
 
-Or i can use this command to extract SNP infoemation form the files
+Or i can use `cut`command to extract SNP information from the files
 
 `cut -f 1,3,4 snp_position.txt | sort -k1,1 > snp_infor.txt`
 
-`cut` command is to extract three needed columns from the original file;
+`cut` command is to extract three needed columns from the original file/ remove the 2 columns which are not needed;
+
 `sort` command is to do sorting by the 1st column (SNP_ID).
 
-I used the results of the last code `cut` to proceed to the following steps 
+
 
 2.**Separate Maize and Teosinte genotypes**
 
-First line of code used follwing `head` command
+First, I used `awk` command, following th above `head` command
 
 `awk '$3 ~ /ZMMIL|ZMMLR|ZMMMR/ { print $0}' fang_et_al_genotypes.txt >> maize_genotypes.txt`
 
 `awk '$3 ~ /ZMPBA|ZMPIL|ZMPJA/ { print $0}' fang_et_al_genotypes.txt >> teosinte_genotypes.txt`
 
-These are the other lines of code I used follwoing the the `cut` command
+Secondly, I used the follwoing four lines of code following the `cut` command
 
 `grep -E "(ZMMIL|ZMMLR|ZMMMR|Group)" fang_et_al_genotypes.txt | cut -f 1,4-986 |awk -f transpose.awk  > maize_genotype.txt`
 
@@ -113,11 +114,9 @@ These are the other lines of code I used follwoing the the `cut` command
 
 `sed 's/Sample_ID/SNP_ID/' teosinte_genotype.txt | sort –k1,1 > teosinte_sgenotype.txt`
 
-`grep` command is to print out lines containing "ZMMIL", "ZMMLR" "ZMMMR" and "Group" ("ZMPBA", "ZMPIL" "ZMPJA" and "Group" for teosinte), which are maize samples and the header;
-
-`cut` command is to remove the 2 columns which are not needed;
-
 `awk` command is to transpose the table so that it has the same data frame with `snp_infor.txt` to be joined later;
+
+`grep` command is to print out lines containing "ZMMIL", "ZMMLR" "ZMMMR" and "Group" ("ZMPBA", "ZMPIL" "ZMPJA" and "Group" for teosinte), which are maize samples and the header;
 
 `sed` command is change the header in genotype file to the same with SNP file, so they can be jopined later;
 
