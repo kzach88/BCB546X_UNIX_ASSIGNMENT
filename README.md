@@ -78,7 +78,7 @@ snp_position.txt
 
 ## **DATA PROCESSING**
 
-1.**Extracting Info from Files**
+1.**Extracting SNP Info from Files**
 
 First, I will take the column headers and put them in new files. Then, I will extract the maize and teosinte data and appended them to the new files.
 
@@ -90,7 +90,16 @@ First, I will take the column headers and put them in new files. Then, I will ex
 
 > `awk '$3 ~ /ZMPBA|ZMPIL|ZMPJA/ { print $0}' fang_et_al_genotypes.txt >> teosinte_genotypes.txt`
 
-2. **Separate Maize and Teosinte genotypes**
+Or i can use this command to extract SNP infoemation form the files
+
+`cut -f 1,3,4 snp_position.txt | sort -k1,1 > snp_infor.txt`
+
+`cut` command is to extract three needed columns from the original file;
+`sort` command is to do sorting by the 1st column (SNP_ID).
+
+I used the results of the last code `cut` to proceed to the following steps 
+
+2.**Separate Maize and Teosinte genotypes**
 
 $ grep -E "(ZMMIL|ZMMLR|ZMMMR|Group)" fang_et_al_genotypes.txt | cut -f 1,4-986 |awk -f transpose.awk  > maize_genotype.txt  
 $ sed 's/Sample_ID/SNP_ID/' maize_genotype.txt | sort –k1,1 > maize_sgenotype.txt 
