@@ -1,11 +1,10 @@
-#cd into `UNIX_Assignment` Git pull to update my Unix_Assignment folder. Made new folder called zkazibwe_UNIX_Assignment within Unix_Assignment folder on HPC-class Cloned my BCB546X_UNIX_ASSIGNMENT folder (https://github.com/kzach88/BCB546X_UNIX_ASSIGNMENT) into my bash working space
+#`cd` into `UNIX_Assignment` `Git pull` to update my `UNIX_Assignment` Repository.
+`ls` to inspect the contents of my `UNIX Assignment`folder. Git pull origin master, Already uptodate
+Cloned my `BCB546X_UNIX_ASSIGNMENT` folder (https://github.com/kzach88/BCB546X_UNIX_ASSIGNMENT) into my bash working space
 
-ls to inspect the contents of my Unix Assignment folder. Git pull origin master, Already uptodate
-
-#DATA INSPECTION
-
-
-Structure and dimensions of files File sizes I will use the use the du command, also with the -h
+1.**DATA INSPECTION
+#Structure and dimensions of files 
+<File sizes I will use the use the du command, also with the -h>
 
 That is du -h fang_et_al_genotypes.txt snp_position.txt
 
