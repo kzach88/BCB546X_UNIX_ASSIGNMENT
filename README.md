@@ -83,8 +83,11 @@ snp_position.txt
 First, I will take the column headers and put them in new files. Then, I will extract the maize and teosinte data and appended them to the new files.
 
 > `head -n 1 fang_et_al_genotypes.txt > maize_genotypes.txt`
+
 > `head -n 1 fang_et_al_genotypes.txt > teosinte_genotypes.txt`
+
 > `awk '$3 ~ /ZMMIL|ZMMLR|ZMMMR/ { print $0}' fang_et_al_genotypes.txt >> maize_genotypes.txt`
+
 > `awk '$3 ~ /ZMPBA|ZMPIL|ZMPJA/ { print $0}' fang_et_al_genotypes.txt >> teosinte_genotypes.txt`
 
 2. **Separate Maize and Teosinte genotypes**
