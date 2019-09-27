@@ -114,18 +114,29 @@ These are the other lines of code I used follwoing the the `cut` command
 `sed 's/Sample_ID/SNP_ID/' teosinte_genotype.txt | sort –k1,1 > teosinte_sgenotype.txt`
 
 `grep` command is to print out lines containing "ZMMIL", "ZMMLR" "ZMMMR" and "Group" ("ZMPBA", "ZMPIL" "ZMPJA" and "Group" for teosinte), which are maize samples and the header;
+
 `cut` command is to remove the 2 columns which are not needed;
+
 `awk` command is to transpose the table so that it has the same data frame with `snp_infor.txt` to be joined later;
+
 `sed` command is change the header in genotype file to the same with SNP file, so they can be jopined later;
+
 `sort` command is to sort by the 1st column;
 
 new files were saved as `maize_sgenotype.txt` and `teosinte_sgenotype.txt` OR `maize_genotype.txt` and `teosinte_genotype.txt`
 
-I checked to make sure my extractions worked by looking at the number of lines, words and characters in each file
-[zkazibwe@hpc-class My-Unix_AS]$ wc maize_genotypes.txt teosinte_genotypes.txt
+I checked to make sure my extractions worked by looking at the number of lines, words and characters in each file 
+
+`maize_genotype.txt` and `teosinte_genotype.txt`
+
+[zkazibwe@hpc-class My-Unix_AS]$ `wc maize_genotypes.txt teosinte_genotypes.txt`
+
     1574  1551964  6250961 maize_genotypes.txt
+    
      976   962336  3884185 teosinte_genotypes.txt
+     
     2550  2514300 10135146 total
+    
  I also checked to see that each file had only the groups that I wanted by cutting the groups from column 3, sorting them and running the command unique and getting a count.
 [zkazibwe@hpc-class My-Unix_AS]$ cut -f 3 maize_genotypes.txt | sort | uniq -c
       1 Group
