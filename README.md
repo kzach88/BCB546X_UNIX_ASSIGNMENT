@@ -63,21 +63,26 @@ snp_position.txt
 
 # I used Vi to inspect the files and saw that they have headers so, i tried `tail` and `awk` and they all returned the same number of colunms for both files
 
-`tail -n +6 fang_et_al_genotypes.txt | awk -F "\t" '{print NF; exit}`
+>`tail -n +6 fang_et_al_genotypes.txt | awk -F "\t" '{print NF; exit}`
+>`grep -v "^#" fang_et_al_genotypes.txt | awk -F "\t" '{print NF; exit}`
 
-`grep -v "^#" fang_et_al_genotypes.txt | awk -F "\t" '{print NF; exit}`
+### non-ASCII characters
 
-###non-ASCII characters
-
-use the file command file snp_position.txt snp_position.txt: ASCII English text
+used the `file` command `file snp_position.txt snp_position.txt`: ASCII English text
 
 hexdump -c snp_position.txt | wc
 
-Words 5174 Lines 87575 Characters 372464 file fang_et_al_genotypes.txt fang_et_al_genotypes.txt: ASCII text, with very long lines
+Words 5174 Lines 87575 Characters 372464 
 
-hexdump -c fang_et_al_genotypes.txt | wc
+file fang_et_al_genotypes.txt 
 
-Words 690748 Lines 11737311 Characters 49710272 Staging and commiting the Data inspection files into the README.md git add README.md
+fang_et_al_genotypes.txt: ASCII text, with very long lines
+
+`hexdump -c fang_et_al_genotypes.txt | wc`
+
+Words 690748 Lines 11737311 Characters 49710272 
+
+Staging and commiting the Data inspection files into the README.md git add README.md
 
 git commit -m "initial commit (README.md)
 
